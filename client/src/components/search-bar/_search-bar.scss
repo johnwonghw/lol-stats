@@ -1,0 +1,33 @@
+.search-bar-container {
+  width: 100%;
+  position: relative;
+  .search-input {
+    width: 100%;
+    padding: 10px 50px 10px 10px;
+    font-size: 18px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    &:focus {
+      outline: 0;
+    }
+    border: 1px solid #a8a8ab;
+  }  
+  .search-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 35px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #4e4e63;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &:focus {
+      outline: 0;
+    }
+  }
+}

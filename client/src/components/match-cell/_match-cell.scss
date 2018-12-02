@@ -1,0 +1,157 @@
+.match-cell-container {
+  // width: 700px;
+  padding: 10px;
+  border: 1px solid #eee;
+  background-color: #e2b6b3;
+  display: inline-flex;
+  font-size: 15px;
+  &.win {
+    background-color: #a3cfec;
+  }
+  .general-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95px;
+    .summoner-name {
+      text-align: center;
+      padding-bottom: 4px;
+    }
+    .outcome {
+      font-weight: bold;
+      &.win {
+        color: #1a78ae;
+      }
+      &.lose {
+        color: #c6443e;
+      }
+    }
+  }
+  .champion-details-wrapper {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .champion-images {
+      display: flex;
+      .champion-icon-wrapper {
+        width: 50px;
+        .champion-icon {
+          width: 100%;
+          border-radius: 50%;
+          -webkit-box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);
+          -moz-box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);
+          box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);  
+        }
+      }
+      .spells, .runes {
+        width: 25px;
+        .spell-icon, .rune-icon {
+          width: 100%;
+          border-radius: 5px;
+        }
+        .rune-icon {
+          background-color: #9c92923b;
+          border-radius: 50%;
+        }
+      }
+      .spells {
+        padding: 0 5px;
+      }
+    }
+    .champion-name {
+      text-align: center;
+    }
+  }
+  .kda-wrapper {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .kills, .deaths, .assists {
+      font-weight: bold;
+      font-size: 17px;
+    }
+    .kills {
+      color: #3f9a6e;
+    }
+    .deaths {
+      color: #c6443e;
+    }
+    .assists {
+      color: #555e5e;
+    }
+    .seperator {
+      color: #879292;
+      padding: 0 3px;
+    }
+    .kda-ratio {
+      font-size: 13px;
+      padding: 3px 0;
+    }
+  }
+  .stats-wrapper {
+    width: 90px;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .items-wrapper {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    .item-icon-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      align-content: flex-start;
+      .item-icon, {
+        width: 23px;
+        padding: 2px;
+        border-radius: 5px;
+      }
+    }
+  }
+  .teams-wrapper {
+    width: 180px;
+    display: flex;
+    .team-summoners-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 80px;
+      padding: 0 4px;
+      .summoner {
+        display: flex;
+        width: 100%;
+        padding: 2px 0;
+        align-items: center;
+        &.current-summoner {
+          .champion-icon {
+            -webkit-box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);
+            -moz-box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);
+            box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);  
+          }
+          .summoner-name {
+            font-weight: bold;
+          }
+        }
+        .champion-icon {
+          height: 20px;
+          border-radius: 3px;
+        }
+        .summoner-name {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          padding-left: 2px;
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
