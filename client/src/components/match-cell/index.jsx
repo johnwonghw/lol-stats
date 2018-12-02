@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import fullChampionData from 'utils/data/lol-static/8.20.1/data/en_US/championFull.json'
+import fullChampionData from '../../utils/data/lol-static/8.20.1/data/en_US/championFull.json'
 import summonerData from '../../utils/data/lol-static/8.20.1/data/en_US/summoner.json'
 import runeData from '../../utils/data/lol-static/8.20.1/data/en_US/runesReforged.json'
 import itemData from '../../utils/data/lol-static/8.20.1/data/en_US/item.json'
@@ -187,12 +187,12 @@ class MatchCell extends Component {
             <div className="runes">
               <img
                 className="rune-icon"
-                src={require(`utils/data/lol-static/img/${runesDetail.rune1.iconName}`)}
+                src={require(`../../utils/data/lol-static/img/${runesDetail.rune1.iconName}`)}
                 alt={runesDetail.rune1.name}
               />
               <img
                 className="rune-icon"
-                src={require(`utils/data/lol-static/img/${runesDetail.rune2.iconName}`)}
+                src={require(`../../utils/data/lol-static/img/${runesDetail.rune2.iconName}`)}
                 alt={runesDetail.rune2.name}
               />
             </div>

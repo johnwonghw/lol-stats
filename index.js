@@ -5,6 +5,8 @@ import axios from 'axios';
 require('dotenv').config();
 let app = express();
 
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 app.get('/api/summoner-match-list/:summonerName', async (req, res) => {
   let matchListDetails;
   let summonerName = req.params.summonerName;
