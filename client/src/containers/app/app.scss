@@ -6,5 +6,10 @@
   }
   .content-wrapper {
     text-align: center;
+    .loading-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 50px 0;
+    }
   }
 }

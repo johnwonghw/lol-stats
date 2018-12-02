@@ -35,6 +35,7 @@ class App extends Component {
             value={value}
             onChange={onChange}
             placeholder={placeholder}
+            autoComplete="off"
           />
           <button className="search-btn">
             <FaSearch />

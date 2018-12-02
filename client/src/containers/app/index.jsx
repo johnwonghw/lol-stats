@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from '../../components/search-bar';
 import MatchCell from '../../components/match-cell';
+import ReactLoading from 'react-loading';
 import './app.scss';
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
       summonerInput: '',
       matchList: [],
       errMsg: '',
+      isLoading: false,
     }
   }
 
@@ -27,15 +29,18 @@ class App extends Component {
   }
 
   handleOnSearch = async () => {
+    this.setState({
+      isLoading: true
+    })
     try {
       let { summonerInput } = this.state;
 
       if (/^[0-9A-Za-z _.]+$/.test(summonerInput)) {
         let url = `/api/summoner-match-list/${summonerInput}`;
-  
+
         let searchRes = await fetch(url);
         let jsonSearchRes = await searchRes.json();
-  
+
         if (jsonSearchRes && jsonSearchRes.length) {
           this.setState({
             matchList: jsonSearchRes,
@@ -59,11 +64,20 @@ class App extends Component {
         errMsg: 'An error occured, please try searching again'
       })
     }
+    this.setState({
+      isLoading: false
+    })
   }
 
   handleContent = () => {
-    let { matchList, errMsg } = this.state;
-    if (errMsg) {
+    let { matchList, errMsg, isLoading } = this.state;
+    if (isLoading) {
+      return (
+        <div className="loading-wrapper">
+          <ReactLoading type={'bars'} color={'grey'} height={'80px'} width={'80px'} />
+        </div>
+      )
+    } else if (errMsg) {
       return (
         <span>{errMsg}</span>
       )
@@ -92,7 +106,7 @@ class App extends Component {
 
   render() {
     let {
-      summonerInput,
+      summonerInput
     } = this.state
 
     let content = this.handleContent();
