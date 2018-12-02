@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import fullChampionData from 'utils/data/lol-static/8.20.1/data/en_US/championFull.json'
-import summonerData from 'utils/data/lol-static/8.20.1/data/en_US/summoner.json'
-import runeData from 'utils/data/lol-static/8.20.1/data/en_US/runesReforged.json'
-import itemData from 'utils/data/lol-static/8.20.1/data/en_US/item.json'
+import summonerData from '../../utils/data/lol-static/8.20.1/data/en_US/summoner.json'
+import runeData from '../../utils/data/lol-static/8.20.1/data/en_US/runesReforged.json'
+import itemData from '../../utils/data/lol-static/8.20.1/data/en_US/item.json'
 
 import './_match-cell.scss'
 

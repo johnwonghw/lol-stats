@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SearchBar from 'components/search-bar';
-import MatchCell from 'components/match-cell';
+import SearchBar from '../../components/search-bar';
+import MatchCell from '../../components/match-cell';
 import './app.scss';
 
 class App extends Component {
