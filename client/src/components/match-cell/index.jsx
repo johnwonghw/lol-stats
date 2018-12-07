@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import fullChampionData from '../../utils/data/lol-static/8.20.1/data/en_US/championFull.json'
-import summonerData from '../../utils/data/lol-static/8.20.1/data/en_US/summoner.json'
-import runeData from '../../utils/data/lol-static/8.20.1/data/en_US/runesReforged.json'
-import itemData from '../../utils/data/lol-static/8.20.1/data/en_US/item.json'
+import fullChampionData from '../../utils/data/lol-static/8.24.1/data/en_US/championFull.json'
+import summonerData from '../../utils/data/lol-static/8.24.1/data/en_US/summoner.json'
+import runeData from '../../utils/data/lol-static/8.24.1/data/en_US/runesReforged.json'
+import itemData from '../../utils/data/lol-static/8.24.1/data/en_US/item.json'
 
 import './_match-cell.scss'
 
@@ -11,7 +11,10 @@ class MatchCell extends Component {
 
   getChampDetails = (championId) => {
     let name = fullChampionData.keys[championId];
-    let iconName = fullChampionData.data[name].image.full;
+    let iconName;
+    if (name) {
+      iconName = fullChampionData.data[name].image.full;
+    }
 
     return {
       name,
@@ -90,7 +93,7 @@ class MatchCell extends Component {
           <img
             className="item-icon"
             key={`${gameId}-${itemId}-${i}`}
-            src={`http://ddragon.leagueoflegends.com/cdn/8.20.1/img/item/${iconName}`}
+            src={`http://ddragon.leagueoflegends.com/cdn/8.24.1/img/item/${iconName}`}
             alt={itemName}
           />
         )
@@ -109,19 +112,22 @@ class MatchCell extends Component {
         <div className="team-summoners-wrapper" key={`${gameId}-${team.teamId}`}>
           {team.summoners.map((summoner) => {
             let champName = fullChampionData.keys[summoner.championId];
-            let champIcon = fullChampionData.data[champName].image.full;
+            let champIcon;
+            if (fullChampionData.data[champName] && fullChampionData.data[champName].image) {
+              champIcon = fullChampionData.data[champName].image.full
+            }
             return (
-              <div 
-              key={`${gameId}-${team.teamId}-${summoner.summonerName}`}
-              className={classnames({
-                "summoner": true,
-                "current-summoner": summoner.summonerName === summonerName
-              })}>
-                <img
+              <div
+                key={`${gameId}-${team.teamId}-${summoner.summonerName}`}
+                className={classnames({
+                  "summoner": true,
+                  "current-summoner": summoner.summonerName === summonerName
+                })}>
+                {champIcon ? <img
                   className="champion-icon"
-                  src={`http://ddragon.leagueoflegends.com/cdn/8.20.1/img/champion/${champIcon}`}
+                  src={`http://ddragon.leagueoflegends.com/cdn/8.24.1/img/champion/${champIcon}`}
                   alt={champName}
-                />
+                /> : <div className="champion-icon empty"></div>}
                 <span className="summoner-name">{summoner.summonerName}</span>
               </div>
             )
@@ -166,35 +172,49 @@ class MatchCell extends Component {
         <div className="champion-details-wrapper">
           <div className="champion-images">
             <div className="champion-icon-wrapper">
-              <img
-                className="champion-icon"
-                src={`http://ddragon.leagueoflegends.com/cdn/8.20.1/img/champion/${champDetails.iconName}`}
-                alt={champDetails.name}
-              />
+              {champDetails.iconName
+                ? <img
+                  className="champion-icon"
+                  src={`http://ddragon.leagueoflegends.com/cdn/8.24.1/img/champion/${champDetails.iconName}`}
+                  alt={champDetails.name}
+                /> : <div className="champion-icon empty"></div>
+              }
+
             </div>
             <div className="spells">
-              <img
-                className="spell-icon"
-                src={`http://ddragon.leagueoflegends.com/cdn/8.20.1/img/spell/${spellsDetail.spell1.iconName}`}
-                alt={spellsDetail.spell1.name}
-              />
-              <img
-                className="spell-icon"
-                src={`http://ddragon.leagueoflegends.com/cdn/8.20.1/img/spell/${spellsDetail.spell2.iconName}`}
-                alt={spellsDetail.spell2.name}
-              />
+              {
+                spellsDetail.spell1.iconName
+                  ? <img
+                    className="spell-icon"
+                    src={`http://ddragon.leagueoflegends.com/cdn/8.24.1/img/spell/${spellsDetail.spell1.iconName}`}
+                    alt={spellsDetail.spell1.name}
+                  /> : <div className="spell-icon empty"></div>
+              }
+              {
+                spellsDetail.spell2.iconName
+                  ? <img
+                    className="spell-icon"
+                    src={`http://ddragon.leagueoflegends.com/cdn/8.24.1/img/spell/${spellsDetail.spell2.iconName}`}
+                    alt={spellsDetail.spell2.name}
+                  /> : <div className="spell-icon empty"></div>
+              }
+
             </div>
             <div className="runes">
-              <img
-                className="rune-icon"
-                src={require(`../../utils/data/lol-static/img/${runesDetail.rune1.iconName}`)}
-                alt={runesDetail.rune1.name}
-              />
-              <img
-                className="rune-icon"
-                src={require(`../../utils/data/lol-static/img/${runesDetail.rune2.iconName}`)}
-                alt={runesDetail.rune2.name}
-              />
+              {runesDetail.rune1 && runesDetail.rune1.iconName
+                ? <img
+                  className="rune-icon"
+                  src={require(`../../utils/data/lol-static/img/${runesDetail.rune1.iconName}`)}
+                  alt={runesDetail.rune1.name}
+                /> : <div className="rune-icon empty"></div>}
+
+              {runesDetail.rune2 && runesDetail.rune2.iconName
+                ? <img
+                  className="rune-icon"
+                  src={require(`../../utils/data/lol-static/img/${runesDetail.rune2.iconName}`)}
+                  alt={runesDetail.rune2.name}
+                /> : <div className="rune-icon empty"></div>}
+
             </div>
           </div>
           <div className="champion-name">{champDetails.name}</div>
